@@ -11,7 +11,22 @@ Client的部分
 [RSocket Client CLI (RSC)](https://github.com/making/rsc) 是由一名日本人Toshiaki Maki開發，是專門用來呼叫RSocket的command line服務，等同於之前使用的curl。
 實際呼叫上面寫的服務結果如下，感覺debug模式十分強大，非常詳細。
 
-windos : `rsc tcp://localhost:8888 --stream --route greetings --log --debug -d "{\""name\"":\""Josh\""}"`
+windos : 
+```
+rsc tcp://localhost:8888 --stream --route greetings --log --debug -d "{\""name\"":\""Robert\""}"
+
+rsc tcp://localhost:8888 --route request-response --log --debug -d "{\""name\"":\""Robert\""}"
+
+rsc tcp://localhost:8888  --route fire-and-forget --log --debug -d "{\""name\"":\""Robert\""}"
+
+rsc tcp://localhost:8888 --channel --route stream-stream --log --debug -d -
+
+{"name":"robert"} 
+{"name":"jerry"}
+```
+
+
+
 linux-base : `rsc tcp://localhost:8888 --stream --route greetings --log --debug -d "{\"name\":\"Josh\"}"`
 
 
